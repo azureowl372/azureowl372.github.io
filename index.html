@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acer Gadget - Translation Service</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts for Typography -->
+    <link rel="stylesheet" href="styles.css">
     <style>
         /* General body and layout styles */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ffffff;
             color: #333;
-            overflow-x: hidden;
-            line-height: 1.6;
         }
 
         /* Hero Section */
@@ -31,7 +28,7 @@
             color: white;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5); /* Dark overlay */
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Dark overlay */
         }
 
         .hero-section h1 {
@@ -39,19 +36,35 @@
             margin: 0;
             font-weight: 600;
             color: #33ff33;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out forwards;
-            font-family: 'Poppins', sans-serif;
         }
 
         .hero-section p {
             font-size: 1.5rem;
             color: #e1e1e1;
             margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out 0.5s forwards;
         }
 
+        .service-options {
+            margin-top: 30px;
+        }
+
+        .service-option {
+            margin: 10px;
+            padding: 20px;
+            background-color: #33ff33;
+            color: #fff;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .service-option:hover {
+            background-color: #28a728;
+        }
+
+        /* Button for Proceeding to Payment */
         .btn-primary {
             background-color: #33ff33;
             color: #1d1f21;
@@ -61,106 +74,10 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s, transform 0.2s;
             margin-top: 30px;
-            opacity: 0;
-            animation: fadeIn 1.5s ease-out 1s forwards;
-            font-family: 'Lora', serif;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.1);
-            background-color: #28a728;
-        }
-
-        /* Feature Section */
-        .feature-section {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #f9f9f9;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .feature-box {
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            width: 300px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .feature-box:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-box h3 {
-            font-size: 2rem;
-            color: #33ff33;
-            margin-bottom: 20px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .feature-box p {
-            font-size: 1rem;
-            color: #666;
-            font-family: 'Lora', serif;
-        }
-
-        .feature-box i {
-            font-size: 3rem;
-            color: #33ff33;
-            margin-bottom: 20px;
-        }
-
-        /* Testimonial Section */
-        .testimonial-section {
-            background-color: #fff;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .testimonial-section h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #33ff33;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .testimonial-card {
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            padding: 30px;
-            border-radius: 10px;
-            display: inline-block;
-            width: 250px;
-            text-align: left;
-        }
-
-        .testimonial-card p {
-            font-size: 1rem;
-            color: #666;
-            margin-bottom: 20px;
-            font-family: 'Lora', serif;
-        }
-
-        .testimonial-card h4 {
-            font-size: 1.2rem;
-            color: #33ff33;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .testimonial-card small {
-            color: #999;
-            font-size: 0.9rem;
-            font-family: 'Lora', serif;
-        }
-
-        /* Footer */
+        /* Footer Section */
         .footer {
             background-color: #181b1e;
             color: #33ff33;
@@ -169,19 +86,6 @@
             position: relative;
             bottom: 0;
             width: 100%;
-            font-family: 'Lora', serif;
-        }
-
-        /* Remove margin between sections */
-        .feature-section, .hero-section, .testimonial-section {
-            margin: 0;
-            padding-top: 0;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
         }
     </style>
 </head>
@@ -189,46 +93,23 @@
 
     <!-- Hero Section -->
     <div class="hero-section">
-        <h1>Acer Gadget</h1>
-        <p>Simultaneous Interpretation Service</p>
-        <a href="payment-page.html" class="btn-primary">Proceed to Payment</a>
-    </div>
+        <div>
+            <h1>Acer Gadget</h1>
+            <p>Simultaneous Interpretation Service</p>
 
-    <!-- Feature Section -->
-    <div class="feature-section">
-        <div class="feature-box">
-            <i class="fas fa-check-circle"></i>
-            <h3>High Accuracy</h3>
-            <p>Our interpreters provide high-quality, accurate translations for your events.</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-clock"></i>
-            <h3>Instant Translation</h3>
-            <p>Get real-time translations with minimal delay for a smooth experience.</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-users"></i>
-            <h3>Experienced Team</h3>
-            <p>Our team consists of skilled interpreters with years of experience in various industries.</p>
+            <!-- Service selection options -->
+            <div class="service-options">
+                <button class="service-option" onclick="window.location.href='payment-page.html?hours=1&price=10'">1 Hour - $10</button>
+                <button class="service-option" onclick="window.location.href='payment-page.html?hours=5&price=40'">5 Hours - $40</button>
+                <button class="service-option" onclick="window.location.href='payment-page.html?hours=10&price=70'">10 Hours - $70</button>
+                <button class="service-option" onclick="window.location.href='payment-page.html?hours=20&price=130'">20 Hours - $130</button>
+            </div>
+
+            <p>Choose a package to proceed with payment</p>
         </div>
     </div>
 
-    <!-- Testimonial Section -->
-    <div class="testimonial-section">
-        <h2>What Our Clients Say</h2>
-        <div class="testimonial-card">
-            <p>"The service was incredible! The interpreters were spot on, and the process was seamless!"</p>
-            <h4>John Doe</h4>
-            <small>CEO, Global Tech Inc.</small>
-        </div>
-        <div class="testimonial-card">
-            <p>"Highly recommended! The real-time translation made our event run smoothly. Great service!"</p>
-            <h4>Jane Smith</h4>
-            <small>Event Coordinator, International Expo</small>
-        </div>
-    </div>
-
-    <!-- Footer -->
+    <!-- Footer Section -->
     <div class="footer">
         <p>&copy; 2025 Acer Gadget. All rights reserved.</p>
     </div>
