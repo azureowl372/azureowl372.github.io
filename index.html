@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acer Gadget - Translation Service</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts for Typography -->
     <style>
         /* General body and layout styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            color: #333;
+            background-color: #121212; /* Deep dark background */
+            color: #e1e1e1; /* Light text */
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Hero Section */
@@ -22,51 +25,38 @@
             background-size: cover;
             background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Dark overlay */
+            box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.6); /* Dark overlay */
         }
 
         .hero-section h1 {
-            font-size: 4rem;
+            font-family: 'Orbitron', sans-serif; /* Futuristic font */
+            font-size: 5rem;
             margin: 0;
-            font-weight: 600;
-            color: #33ff33;
+            font-weight: 500;
+            color: #33ff33; /* Neon green */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
         }
 
         .hero-section p {
             font-size: 1.5rem;
             color: #e1e1e1;
             margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 0.5s forwards;
         }
 
-        .service-options {
-            margin-top: 30px;
-        }
-
-        .service-option {
-            margin: 10px;
-            padding: 20px;
-            background-color: #33ff33;
-            color: #fff;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .service-option:hover {
-            background-color: #28a728;
-        }
-
-        /* Button for Proceeding to Payment */
         .btn-primary {
-            background-color: #33ff33;
+            background-color: #33ff33; /* Neon Green */
             color: #1d1f21;
             padding: 15px 30px;
             font-size: 1.2rem;
@@ -74,44 +64,147 @@
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
             margin-top: 30px;
         }
 
-        /* Footer Section */
+        .btn-primary:hover {
+            transform: scale(1.1);
+            background-color: #28a728;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Section Layout */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #181818; /* Dark background */
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', sans-serif; /* Futuristic font for section titles */
+            font-size: 2.5rem;
+            color: #33ff33;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(51, 255, 51, 0.7); /* Glowing text */
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        /* Pricing Section */
+        .pricing-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .pricing-box {
+            background-color: #2b2b2b; /* Dark gray background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .pricing-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-box h3 {
+            font-family: 'Orbitron', sans-serif; /* Futuristic font */
+            font-size: 2rem;
+            color: #33ff33;
+            margin-bottom: 15px;
+        }
+
+        .pricing-box p {
+            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .pricing-box span {
+            font-size: 1.5rem;
+            color: #e1e1e1;
+            font-weight: bold;
+        }
+
+        /* Footer */
         .footer {
-            background-color: #181b1e;
+            background-color: #181818;
             color: #33ff33;
             text-align: center;
             padding: 30px 20px;
             position: relative;
             bottom: 0;
             width: 100%;
+            font-family: 'Lora', serif;
         }
+
     </style>
 </head>
 <body>
 
     <!-- Hero Section -->
     <div class="hero-section">
-        <div>
-            <h1>Acer Gadget</h1>
-            <p>Simultaneous Interpretation Service</p>
+        <h1>Welcome to Acer Gadget</h1>
+        <p>Revolutionizing Translation with Advanced Technology</p>
+        <a href="#pricing" class="btn-primary">Choose Your Service</a>
+    </div>
 
-            <!-- Service selection options -->
-            <div class="service-options">
-                <button class="service-option" onclick="window.location.href='payment-page.html?hours=1&price=10'">1 Hour - $10</button>
-                <button class="service-option" onclick="window.location.href='payment-page.html?hours=5&price=40'">5 Hours - $40</button>
-                <button class="service-option" onclick="window.location.href='payment-page.html?hours=10&price=70'">10 Hours - $70</button>
-                <button class="service-option" onclick="window.location.href='payment-page.html?hours=20&price=130'">20 Hours - $130</button>
+    <!-- About Us Section -->
+    <div class="section">
+        <h2>Why Choose Acer Gadget?</h2>
+        <p>We are transforming the future of interpretation. Acer Gadget provides cutting-edge translation services powered by AI and human expertise. Whether it’s a corporate event or an international summit, we bridge the language gap seamlessly.</p>
+        <p>Our mission is simple: make communication effortless. We offer fast, precise, and reliable real-time translation services that keep you connected no matter where you are.</p>
+        <p>We’re leading the way in making multilingual interactions smoother and more efficient. Join Acer Gadget and experience translation like never before.</p>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="section">
+        <h2>Pick Your Ideal Service Plan</h2>
+        <p>Our services are designed to fit your needs. Select the perfect plan for your event.</p>
+        <div class="pricing-options">
+            <div class="pricing-box" onclick="window.location.href='payment-page.html?price=10&hours=1'">
+                <h3>1 Hour</h3>
+                <p>$10</p>
+                <span>Proceed to Payment</span>
             </div>
-
-            <p>Choose a package to proceed with payment</p>
+            <div class="pricing-box" onclick="window.location.href='payment-page.html?price=40&hours=5'">
+                <h3>5 Hours</h3>
+                <p>$40</p>
+                <span>Proceed to Payment</span>
+            </div>
+            <div class="pricing-box" onclick="window.location.href='payment-page.html?price=75&hours=10'">
+                <h3>10 Hours</h3>
+                <p>$75</p>
+                <span>Proceed to Payment</span>
+            </div>
+            <div class="pricing-box" onclick="window.location.href='payment-page.html?price=150&hours=20'">
+                <h3>20 Hours</h3>
+                <p>$150</p>
+                <span>Proceed to Payment</span>
+            </div>
         </div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2025 Acer Gadget. All rights reserved.</p>
+        <p>&copy; 2025 Acer Gadget. All rights reserved. Innovation at its finest.</p>
     </div>
 
 </body>
