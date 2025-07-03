@@ -3,38 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acer Gadget Inc. - Payment</title>
+    <title>Acer Gadget - Payment</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* General styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1d1f21; /* Dark background to match index page */
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        /* Header Section */
-        .header {
-            background-color: #233142; /* Dark header background */
+            background-color: #1d1f21;
             color: white;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #33ff33; /* Neon green color from index page */
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #ccc; /* Light gray for text */
         }
 
         /* Payment Section */
@@ -44,23 +21,21 @@
             align-items: center;
             height: 80vh;
             padding: 20px;
-            animation: slideIn 1s ease-out;
         }
 
         .payment-box {
-            background-color: #2d3136; /* Dark gray background */
+            background-color: #2d3136;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
             width: 100%;
             max-width: 600px;
-            margin: auto;
         }
 
         .payment-box h2 {
             font-size: 2.5rem;
-            color: #33ff33; /* Neon Green color */
+            color: #33ff33;
             margin-bottom: 20px;
         }
 
@@ -70,34 +45,11 @@
             margin-bottom: 40px;
         }
 
-        .payment-message {
-            background-color: #5cb85c; /* Green background */
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        .payment-cancel-message {
-            background-color: #d9534f; /* Red background */
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
         /* PayPal button container */
         #paypal-button-container {
             margin-top: 30px;
         }
 
-        /* Footer Section */
         .footer {
             background-color: #233142;
             color: white;
@@ -108,98 +60,63 @@
             width: 100%;
         }
 
-        /* Animations */
-        @keyframes slideIn {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Button hover effect */
-        .paypal-button-container button {
-            transition: transform 0.2s ease, background-color 0.3s ease;
-        }
-
-        .paypal-button-container button:hover {
-            transform: scale(1.05);
-            background-color: #ff9900;
-        }
-
     </style>
 </head>
 <body>
-
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Acer Gadget Inc. - Simultaneous Interpretation Service</h1>
-        <p>Complete your payment to access the best real-time translations for your events.</p>
-    </div>
 
     <!-- Payment Section -->
     <div class="payment-container">
         <div class="payment-box">
             <h2>Complete Your Payment</h2>
-            <p>Price: $10 per hour</p>
+            <p>Price: $<span id="price"></span> for <span id="hours"></span> hour(s)</p>
             <p>Proceed with the payment to unlock our high-quality translation services.</p>
 
-            <div id="paypal-button-container"></div> <!-- PayPal button container -->
+            <!-- PayPal button container -->
+            <div id="paypal-button-container"></div>
         </div>
-    </div>
-
-    <!-- Success/Failure Message Display -->
-    <div id="payment-message-container">
-        <!-- This will be dynamically populated by JS -->
     </div>
 
     <!-- Footer Section -->
     <div class="footer">
-        <p>&copy; 2025 Acer Gadget Inc. All rights reserved.</p>
+        <p>&copy; 2025 Acer Gadget. All rights reserved.</p>
     </div>
 
     <!-- Include PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=ATn-4s4VUWhvWrosIkZcxRJ-AdLv7WxScrLSdvzmpRCWQ8nw_9ny3wb3ZYgKt2q5zDELkUKsQw8iEje9&components=buttons"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ATn-4s4VUWhvWrosIkZcxRJ-AdLv7WxScrLSdvzmpRCWQ8nw_9ny3wb3ZYgKt2q5zDELkUKsQw8iEje9"></script>
 
     <script>
+        // Get parameters from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const hours = urlParams.get('hours');
+        const price = urlParams.get('price');
+
+        // Display the selected hours and price
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('price').textContent = price;
+
+        // PayPal button setup
         paypal.Buttons({
             createOrder: function(data, actions) {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '10.00'  // Set payment amount
+                            value: price // Dynamic price based on selection
                         }
-                    }],
-                    application_context: {
-                        return_url: 'http://localhost:3000/payment-success',  // Success callback URL
-                        cancel_url: 'http://localhost:3000/payment-cancel'   // Cancel callback URL
-                    }
+                    }]
                 });
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    console.log('Payment Successful:', details);
-                    displayMessage('Payment was successful! Thank you for your purchase.', 'payment-message');
-                    setTimeout(function() {
-                        // Redirect to the new member page after successful payment
-                        window.location.href = 'member-page.html';  // Redirecting to the member page
-                    }, 3000); // Redirect after 3 seconds
+                    alert('Payment was successful! Thank you for your purchase.');
+                    window.location.href = '/member-page.html';  // Redirect to the member page after payment
                 });
             },
-            onCancel: function(data) {
-                console.log('Payment Cancelled:', data);
-                displayMessage('Payment was cancelled. Please try again.', 'payment-cancel-message');
-                setTimeout(function() {
-                    window.location.href = '/payment-cancel';
-                }, 3000); // Redirect after 3 seconds
-            },
             onError: function(error) {
-                console.error('Payment Error:', error);
+                console.error('PayPal payment error:', error);
+                alert('There was an error with the payment. Please try again.');
             }
-        }).render('#paypal-button-container'); // Render PayPal button in specified container
-
-        // Display success/cancel message
-        function displayMessage(message, messageClass) {
-            var messageContainer = document.getElementById('payment-message-container');
-            messageContainer.innerHTML = '<div class="' + messageClass + '">' + message + '</div>';
-        }
+        }).render('#paypal-button-container');  // Render PayPal button in the container
     </script>
+
 </body>
 </html>
