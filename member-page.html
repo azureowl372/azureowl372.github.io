@@ -3,109 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acer Gadget Inc. - Member Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+    <title>Acer Gadget - Welcome to Our Members</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* General body and layout styles */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1d1f21; /* Dark background */
-            color: #fff;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Header Section */
-        .header {
-            background-color: #233142; /* Dark header background */
+            background-color: #1d1f21;
             color: white;
-            padding: 60px 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #33ff33; /* Neon Green */
-        }
-
-        .header p {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-
-        /* Welcome Section */
-        .welcome-message {
-            background-color: #5cb85c; /* Green background */
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 26px;
-            margin-top: 20px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        /* Member Benefits Section */
-        .member-benefits {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: #f9f9f9;
+        .hero-section {
+            height: 100vh;
+            background-image: url('https://www.testim.io/wp-content/uploads/2024/02/power_of_ai_blog.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-        }
-
-        .member-benefit-box {
-            background-color: #2d3136;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 40px;
-            margin: 20px;
-            width: 280px;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             color: white;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .member-benefit-box:hover {
-            transform: translateY(-10px); /* Slight hover effect */
-        }
-
-        .member-benefit-box h3 {
-            font-size: 2rem;
-            color: #33ff33; /* Neon Green */
-            margin-bottom: 20px;
-        }
-
-        .member-benefit-box p {
-            font-size: 1rem;
-            color: #ddd;
-        }
-
-        .member-benefit-box i {
-            font-size: 3rem;
-            color: #33ff33; /* Neon Green for icons */
-            margin-bottom: 20px;
-        }
-
-        /* Footer Section */
-        .footer {
-            background-color: #233142;
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
             position: relative;
-            bottom: 0;
-            width: 100%;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); /* Dark overlay */
         }
 
-        /* Button */
+        .hero-section h1 {
+            font-size: 4rem;
+            margin: 0;
+            font-weight: 600;
+            color: #33ff33;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            color: #e1e1e1;
+            margin-top: 20px;
+        }
+
+        /* Welcome Message Section */
+        .welcome-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .welcome-section h2 {
+            font-size: 3rem;
+            color: #33ff33;
+            margin-bottom: 20px;
+        }
+
+        .welcome-section p {
+            font-size: 1.5rem;
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
         .btn-primary {
             background-color: #33ff33;
             color: #1d1f21;
@@ -114,52 +68,37 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s;
+            text-decoration: none;
             margin-top: 30px;
         }
 
-        .btn-primary:hover {
-            transform: scale(1.1);
-            background-color: #28a728;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        /* Footer Section */
+        .footer {
+            background-color: #181b1e;
+            color: #33ff33;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <div class="header">
-        <h1>Welcome to Acer Gadget</h1>
-        <p>Thank you for joining our premium translation service platform. Enjoy exclusive benefits as a member!</p>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div>
+            <h1>Acer Gadget</h1>
+            <p>Welcome to our Membership</p>
+        </div>
     </div>
 
     <!-- Welcome Message Section -->
-    <div class="welcome-message">
-        Welcome to the Acer Gadget Family! We're thrilled to have you as a new member.
-    </div>
-
-    <!-- Member Benefits Section -->
-    <div class="member-benefits">
-        <div class="member-benefit-box">
-            <i class="fas fa-check-circle"></i>
-            <h3>High Accuracy</h3>
-            <p>Get precise and real-time translations with our advanced technology.</p>
-        </div>
-        <div class="member-benefit-box">
-            <i class="fas fa-users"></i>
-            <h3>Expert Team</h3>
-            <p>Our experienced interpreters ensure quality and reliability in every session.</p>
-        </div>
-        <div class="member-benefit-box">
-            <i class="fas fa-cogs"></i>
-            <h3>Customizable Solutions</h3>
-            <p>Tailored solutions to suit your specific translation needs for all types of events.</p>
-        </div>
+    <div class="welcome-section">
+        <h2>We're Glad to Have You as Our Member!</h2>
+        <p>Thank you for choosing Acer Gadget's services. We're excited to provide you with the best real-time translation services for your meetings and events.</p>
+        <a href="index.html" class="btn-primary">Go Back to Home</a>
     </div>
 
     <!-- Footer Section -->
