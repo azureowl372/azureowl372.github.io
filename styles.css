@@ -1,0 +1,70 @@
+/* Basic styling for the service introduction */
+.service-intro {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#start-button {
+    background-color: #4CAF50; /* Green color for the start button */
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#start-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* PayPal button container */
+#paypal-button-container {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* Styling the payment success and cancellation messages */
+.payment-message {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.payment-message.cancelled {
+    color: #d9534f; /* Red color for cancelled payment */
+    border: 2px solid #d9534f;
+}
+
+.payment-message.success {
+    color: #5cb85c; /* Green color for success */
+    border: 2px solid #5cb85c;
+}
+/* General body and layout styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background-color: #1d1f21; /* Dark background */
+    color: #fff; /* Light text color */
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #181b1e; /* Darker background */
+    color: #33ff33; /* Neon Green color */
+    text-align: center;
+    padding: 100px 20px;  /* Adjusted padding */
+    height: auto;
+    position: relative;
+    background-image: url('https://www.testim.io/wp-content/uploads/2024/02/power_of_ai_blog.jpg'); /* Background Image */
+    background-size: cover;
+    background-position: center;
+    animation: fadeIn 2s ease-in; /* Fade-in animation */
+    margin-top: 0; /* Ensure no margin at the top */
+}
+
+/* Additional Sections (same as before) */
+
+/* Rest of your CSS remains the same */
