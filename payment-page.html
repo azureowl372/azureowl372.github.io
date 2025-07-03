@@ -4,118 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acer Gadget - Payment</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;500;600&family=Lora:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts for Typography -->
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
+            background-color: #1f1f1f;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
             padding: 0;
-            background-color: #1d1f21;
-            color: white;
-        }
-
-        /* Payment Section */
-        .payment-container {
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 80vh;
-            padding: 20px;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif; /* Applying Orbitron to Acer Gadget */
+            color: #33ff33;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 20px #33ff33, 0 0 30px #33ff33;
         }
 
         .payment-box {
             background-color: #2d3136;
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
             text-align: center;
-            width: 100%;
             max-width: 600px;
+            width: 100%;
         }
 
         .payment-box h2 {
+            font-family: 'Orbitron', sans-serif; /* Applying Orbitron to heading */
             font-size: 2.5rem;
             color: #33ff33;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px #33ff33;
         }
 
         .payment-box p {
-            font-size: 1.2rem;
             color: #bbb;
-            margin-bottom: 40px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
 
-        /* PayPal button container */
         #paypal-button-container {
-            margin-top: 30px;
+            margin-top: 20px;
+        }
+
+        .paypal-btn {
+            background: linear-gradient(145deg, #6c1d7a, #1e44bb);
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .paypal-btn:hover {
+            transform: scale(1.1);
+            background-color: #9e2a3f;
+        }
+
+        /* Success message section */
+        .success-message {
+            background-color: #28a745; /* Green background */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            text-align: center;
+            max-width: 600px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden initially */
         }
 
         .footer {
-            background-color: #233142;
-            color: white;
+            font-size: 0.9rem;
+            color: #777;
+            position: absolute;
+            bottom: 10px;
             text-align: center;
-            padding: 30px 20px;
-            position: relative;
-            bottom: 0;
             width: 100%;
+        }
+
+        .footer a {
+            color: #33ff33;
+            text-decoration: none;
         }
 
     </style>
 </head>
 <body>
 
-    <!-- Payment Section -->
-    <div class="payment-container">
-        <div class="payment-box">
-            <h2>Complete Your Payment</h2>
-            <p>Price: $<span id="price"></span> for <span id="hours"></span> hour(s)</p>
-            <p>Proceed with the payment to unlock our high-quality translation services.</p>
-
-            <!-- PayPal button container -->
-            <div id="paypal-button-container"></div>
-        </div>
+    <h1>Acer Gadget</h1> <!-- Using Orbitron font for Acer Gadget -->
+    <div class="payment-box">
+        <h2>Confirm Your Payment</h2>
+        <p id="payment-info">You are purchasing <span id="hours"></span> hour(s) of service for <span id="price"></span></p>
+        <div id="paypal-button-container"></div>
     </div>
 
-    <!-- Footer Section -->
+    <div class="success-message" id="success-message">
+        <p>Payment Successful! Thank you for your purchase.</p>
+    </div>
+
     <div class="footer">
         <p>&copy; 2025 Acer Gadget. All rights reserved.</p>
     </div>
 
-    <!-- Include PayPal SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=ATn-4s4VUWhvWrosIkZcxRJ-AdLv7WxScrLSdvzmpRCWQ8nw_9ny3wb3ZYgKt2q5zDELkUKsQw8iEje9"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ATn-4s4VUWhvWrosIkZcxRJ-AdLv7WxScrLSdvzmpRCWQ8nw_9ny3wb3ZYgKt2q5zDELkUKsQw8iEje9&components=buttons"></script>
 
     <script>
-        // Get parameters from the URL
+        // Get price and hours from URL
         const urlParams = new URLSearchParams(window.location.search);
-        const hours = urlParams.get('hours');
         const price = urlParams.get('price');
+        const hours = urlParams.get('hours');
 
-        // Display the selected hours and price
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('price').textContent = price;
+        // Set the displayed price and hours
+        if (price && hours) {
+            document.getElementById('price').textContent = `$${price}`;
+            document.getElementById('hours').textContent = hours;
+        }
 
-        // PayPal button setup
+        // PayPal Button Configuration
         paypal.Buttons({
             createOrder: function(data, actions) {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: price // Dynamic price based on selection
+                            value: price
                         }
                     }]
                 });
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    alert('Payment was successful! Thank you for your purchase.');
-                    window.location.href = '/member-page.html';  // Redirect to the member page after payment
+                    // Display success message
+                    document.getElementById('success-message').style.display = 'block';
+                    // Wait for 3 seconds and then redirect to member page
+                    setTimeout(function() {
+                        window.location.href = 'member-page.html';
+                    }, 3000); // 3 seconds delay
                 });
             },
             onError: function(error) {
-                console.error('PayPal payment error:', error);
-                alert('There was an error with the payment. Please try again.');
+                console.error('Payment Error:', error);
             }
-        }).render('#paypal-button-container');  // Render PayPal button in the container
+        }).render('#paypal-button-container'); // Render PayPal button
     </script>
 
 </body>
